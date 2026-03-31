@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <script src="./script.js"></script>
+    <script src="./templates.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body" onload="init()">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid header">
+            <span class="navbar-brand mb-0 h1">Pokedex</span>
+            <div class="search_bar">
+                <div>
+                    <div>
+                        <input id="input_field" onkeyup="showSearchedPoke()" type="text"><button
+                            onclick="showSearchedPoke()" class="button">search</button>
+                    </div>
+                    <span id="alert_searchbar" class="alert_searchbar">min. 3 Zeichen eingeben!</span>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <div class="content" id="content"></div>
+    <div onclick="closeOverlay()" class="overlay" id="overlay">
+        <span onclick="closeOverlay()" class="close_overlay">X</span>
+        <div id="overlay_content"></div>
+    </div>
+    <div>
+        <button onclick="fetchMorePokemon()">mehr Pokemon laden</button>
+    </div>
+
+</body>
+
+</html>

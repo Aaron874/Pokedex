@@ -1,0 +1,192 @@
+.content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.pokemon_img {
+    width: 150px;
+}
+
+.fire {
+    background-color: orange;
+}
+
+.water {
+    background-color: rgba(48, 125, 240, 0.74);
+}
+
+.grass {
+    background-color: rgb(51, 255, 0);
+}
+
+.bug {
+    background-color: rgb(55, 206, 17);
+}
+
+.normal {
+ background-color: white;
+}
+
+.electric {
+    background-color: yellow;
+}
+
+.fighting {
+    background-color: rgb(255, 0, 0);
+}
+
+.ground {
+    background-color:brown;
+}
+
+.flying {
+    background-color: rgb(78, 185, 247);
+}
+
+.poison {
+    background-color: rgb(48, 240, 0);
+}
+
+.dark {
+    background-color: black;
+}
+
+.fairy {
+    background-color: pink;
+}
+
+.steel {
+    background-color: rgb(122, 154, 180);
+}
+
+.ice {
+    background-color: rgb(203, 230, 255);
+}
+
+.psychic {
+    background-color: rgb(206, 17, 197);
+}
+
+.rock {
+    background-color: grey;
+}
+
+.ghost {
+    background-color: beige;
+}
+
+.dragon {
+    background-color: rgb(190, 204, 0);
+}
+
+.overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pokemon_card {
+    cursor: pointer;
+}
+
+.pokemon_card:hover {
+    box-shadow: 0 16px 16px 0;
+}
+
+.pokemon_card_close {
+    background-color: white;
+    width: 250px;
+    height: 390px;
+}
+
+.space_around {
+    display: flex;
+    justify-content: space-around;
+    background-color: #21217ca1;
+}
+
+.style_pokemon_closelook {
+    display: flex;
+    justify-content: center;
+    background: #7e7e7e;
+}
+
+.backgroundcolor_stats {
+    background-color: #21217ca1;
+}
+
+.style_border_stats {
+    background-color: #220d90;
+    width: 1px;
+}
+
+.styly_div_underline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.style_underline {
+    width: 125px;
+    height: 1px;
+}
+
+.close_overlay {
+    position: relative;
+    top: -145px;
+    right: -245px;
+    cursor: pointer;
+}
+
+.style_onclick_stats {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.button-next {
+    position: relative;
+    top: -14px;
+    left: 227px;
+    font-size: 40px;
+    width: 40px;
+}
+
+.button-previous {
+    position: relative;
+    top: 32px;
+    font-size: 40px;
+    width: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    /* width: 21px; */
+    height: 21px;
+    background-color: green;
+    border-style: none;
+}
+
+.search_bar {
+    display: flex;
+    align-items: center;
+}
+
+.alert_searchbar {
+    display: none;
+}
+
+.overflow {
+    overflow: hidden;
+}
