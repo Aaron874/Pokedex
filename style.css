@@ -1,6 +1,7 @@
 body {
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 
 .content {
@@ -8,6 +9,34 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
+    background-color: rgb(15, 118, 136);
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.button_style {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(15, 118, 136);
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.loading_button {
+    border-radius: 25px;
+    border-style: none;
+    height: 40px;
+    cursor: pointer;
+}
+
+.loading_button:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.navbar {
+    background-color: rgb(6, 95, 110);
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .pokemon_img {
@@ -31,7 +60,7 @@ body {
 }
 
 .normal {
- background-color: white;
+    background-color: white;
 }
 
 .electric {
@@ -43,7 +72,7 @@ body {
 }
 
 .ground {
-    background-color:brown;
+    background-color: brown;
 }
 
 .flying {
@@ -107,7 +136,7 @@ body {
 }
 
 .pokemon_card_close {
-    background-color: white;
+    background-color: rgb(15, 118, 136);
     width: 250px;
     height: 390px;
 }
@@ -121,7 +150,6 @@ body {
 .style_pokemon_closelook {
     display: flex;
     justify-content: center;
-    background: #7e7e7e;
 }
 
 .backgroundcolor_stats {
@@ -181,6 +209,7 @@ body {
     height: 21px;
     background-color: green;
     border-style: none;
+    cursor: pointer;
 }
 
 .search_bar {
@@ -198,4 +227,10 @@ body {
 
 .content_limit {
     max-width: 1440px;
+    width: 100vw;
+}
+
+footer {
+    height: 80px;
+    background-color: rgb(6, 95, 110);
 }
