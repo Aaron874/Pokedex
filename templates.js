@@ -1,9 +1,9 @@
 function pokemonMainpageTemplate(pokemon, index) {
     return `
         <div onclick=openOverlay(${pokemon.id}) class="pokemon_card">
-            <div>
-                <span>${pokemon.id}</span>
-                <span>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</span>
+            <div class="pokemon_name">
+                <h2>${pokemon.id}</h2>
+                <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
             </div>
             <div id="pokemonImg_${index}"></div>
             <div>
@@ -17,9 +17,9 @@ function pokemonMainpageTemplate(pokemon, index) {
 function pokemonCloseLook(pokemon, index) {
     return `
         <div onclick="disableCloseoverlay(event)" class="pokemon_card_close pokemon_card">
-            <div>
-                <span>${pokemon.id}</span>
-                <span>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</span>
+            <div class="pokemon_name">
+                <h2>${pokemon.id}</h2>
+                <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
             </div>
             <div class="style_pokemon_closelook" id="pokemonImage_${index}"></div>
             <div class="space_around">

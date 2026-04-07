@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+h2 {
+    margin: 0;
+}
+
 .content {
     display: flex;
     justify-content: center;
@@ -233,4 +237,32 @@ body {
 footer {
     height: 80px;
     background-color: rgb(6, 95, 110);
+}
+
+.header_img {
+    width: 24px;
+    height: 24px;
+}
+
+.header_title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pokemon_name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 450px) {
+    h1 {
+        display: none;
+    }
+
+    .header {
+        align-items: center;
+        height: 60px;
+    }
 }
