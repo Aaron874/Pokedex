@@ -13,47 +13,50 @@
 </head>
 
 <body id="body" onload="init()">
-    <div>
-        <div class="content_limit">
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid header">
-                    <div class="header_title">
-                        <img class="header_img" src="./img/icon.png" alt="">
-                        <h1 class="navbar-brand mb-0 h1">Pokedex</h1>
-                    </div>
-                    <div class="search_bar">
-                        <div>
-                            <div>
-                                <input id="input_field" onkeyup="showSearchedPoke()" type="text"><button
-                                    onclick="showSearchedPoke()" class="button">search</button>
-                            </div>
-                            <span id="alert_searchbar" class="alert_searchbar">min. 3 Zeichen eingeben!</span>
-                        </div>
-                    </div>
 
+    <header>
+        <nav class="navbar bg-body-tertiary content_limit">
+            <div class="container-fluid header">
+                <div class="header_title">
+                    <img class="header_img" src="./img/icon.png" alt="">
+                    <h1 class="navbar-brand mb-0 h1">Pokedex</h1>
                 </div>
-            </nav>
-        </div>
-        <div class="content_limit">
-            <div class="content" id="content"></div>
-        </div>
-        <div class="content_limit">
-            <div onclick="closeOverlay()" class="overlay" id="overlay">
-                <span onclick="closeOverlay()" class="close_overlay">X</span>
-                <div id="overlay_content"></div>
-            </div>
-        </div>
-        <div class="content_limit">
-            <div class="button_style">
-                <button class="loading_button" onclick="fetchMorePokemon()">mehr Pokemon laden</button>
-            </div>
-        </div>
-        <div class="content_limit">
-            <footer>
+                <div class="search_bar">
+                    <div>
+                        <div>
+                            <input id="input_field" onkeyup="showSearchedPoke()" type="text"><button
+                                onclick="showSearchedPoke()" class="button">search</button>
+                        </div>
+                        <span id="alert_searchbar" class="alert_searchbar">min. 3 Zeichen eingeben!</span>
+                    </div>
+                </div>
 
-            </footer>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <div class="displayflex">
+            <div class="content_limit">
+                <div class="content" id="content"></div>
+            </div>
+        </div>
+        <div class="displayflex">
+            <div class="content_limit">
+                <div onclick="closeOverlay()" class="overlay" id="overlay">
+                    <span onclick="closeOverlay()" class="close_overlay">X</span>
+                    <div id="overlay_content"></div>
+                </div>
+            </div>
+        </div>
+        <div class="displayflex">
+            <div class="content_limit">
+                <div class="button_style">
+                    <button class="loading_button" onclick="fetchMorePokemon()">mehr Pokemon laden</button>
+                </div>
+            </div>
         </div>
     </div>
+    <footer></footer>
 </body>
 
 </html>

@@ -1,11 +1,23 @@
 body {
+    /* display: flex;
+    justify-content: center; */
+    margin: 0;
+    background-color: rgb(15, 118, 136);
+}
+
+.displayflex {
     display: flex;
     justify-content: center;
-    margin: 0;
 }
 
 h2 {
     margin: 0;
+}
+
+header {
+    background-color: rgb(6, 95, 110);
+    display: flex;
+    justify-content: center;
 }
 
 .content {
@@ -23,7 +35,7 @@ h2 {
     justify-content: center;
     background-color: rgb(15, 118, 136);
     padding-top: 32px;
-    padding-bottom: 32px;
+    padding-bottom: 112px;
 }
 
 .loading_button {
@@ -209,11 +221,11 @@ h2 {
 }
 
 .button {
-    /* width: 21px; */
     height: 21px;
     background-color: green;
     border-style: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .search_bar {
@@ -237,6 +249,9 @@ h2 {
 footer {
     height: 80px;
     background-color: rgb(6, 95, 110);
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
 }
 
 .header_img {
