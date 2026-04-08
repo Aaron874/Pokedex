@@ -23,9 +23,9 @@ function pokemonCloseLook(pokemon, index) {
             </div>
             <div class="style_pokemon_closelook" id="pokemonImage_${index}"></div>
             <div class="space_around">
-                <div class="style_onclick_stats" onclick="openMain()">main</div>
+                <div class="style_onclick_stats" onclick="openMain()"><span>main</span></div>
                 <div class="style_border_stats"></div>
-                <div class="style_onclick_stats" onclick="openStats(${index})">stats</div>
+                <div class="style_onclick_stats" onclick="openStats(${index})"><span>stats</span></div>
             </div>
             <div class="style_div_underline">
                 <div class="style_underline"></div>

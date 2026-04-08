@@ -1,6 +1,7 @@
 const PokemonNames = [];
+const currentIndexObject = {};
 
-let searchInputValue = 0;
+let currentIndex = 21;
 
 function init() {
     fetchPokemon();
@@ -23,7 +24,6 @@ async function showSearchedPoke() {
     let input = document.getElementById('input_field').value.toLowerCase();
     let content = document.getElementById('content');
 
-
     let results = PokemonNames.filter(name =>
         name.toLowerCase().startsWith(input)
     );
@@ -44,15 +44,14 @@ async function showSearchedPoke() {
 
         }
         document.getElementById('alert_searchbar').style = '';
-    } else if (input.length < 3 && content.childElementCount < 20) {
-        if (input.length < searchInputValue) return
-        searchInputValue = input.length;
+    } else if (input.length < 1 && content.childElementCount < 20) {
         fetchPokemon();
         currentIndex = 21;
+        document.getElementById('alert_searchbar').style = '';
     } else if (input.length > 0 && input.length < 3) {
         document.getElementById('alert_searchbar').style = 'display: flex';
     } else if (input.length < 1) {
-        document.getElementById('alert_searchbar').style = '';
+        document.getElementById('alert_searchbar').style = 'display: flex';
     }
 
 }
@@ -70,10 +69,9 @@ async function fetchPokemon() {
         allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
 
         backgroundPokemonCard(responseToJson, index);
+        currentIndexObject.value = 21;
     }
 }
-
-let currentIndex = 21;
 
 async function fetchMorePokemon() {
     let allPokemon = document.getElementById('content');
@@ -93,6 +91,7 @@ async function fetchMorePokemon() {
             backgroundPokemonCard(responseToJson, index);
         }
         currentIndex += 20;
+        currentIndexObject.value = currentIndex;
     }
 }
 

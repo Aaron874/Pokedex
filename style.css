@@ -1,6 +1,4 @@
 body {
-    /* display: flex;
-    justify-content: center; */
     margin: 0;
     background-color: rgb(15, 118, 136);
 }
@@ -192,6 +190,7 @@ header {
     top: -145px;
     right: -245px;
     cursor: pointer;
+    color: orange;
 }
 
 .style_onclick_stats {
@@ -206,6 +205,7 @@ header {
     left: 227px;
     font-size: 40px;
     width: 40px;
+    color: orange;
 }
 
 .button-previous {
@@ -213,7 +213,12 @@ header {
     top: 32px;
     font-size: 40px;
     width: 40px;
+    color: orange;
 }
+span {
+    color: white;
+}
+
 
 .header {
     display: flex;
@@ -226,6 +231,15 @@ header {
     border-style: none;
     cursor: pointer;
     font-size: 16px;
+}
+
+.button-2 {
+    height: 21px;
+    background-color: green;
+    border-style: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: none;
 }
 
 .search_bar {
@@ -279,5 +293,26 @@ footer {
     .header {
         align-items: center;
         height: 60px;
+    }
+    footer {
+        height: 40px;
+    }
+}
+
+@media (max-width: 320px) {
+    footer {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .button {
+        display: none;
+    }
+    .button-2 {
+        display: flex;
+    }
+    input {
+        width: 100px;
     }
 }
