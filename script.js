@@ -4,8 +4,26 @@ const currentIndexObject = {};
 let currentIndex = 21;
 
 function init() {
-    fetchPokemon();
+    showSpinnerAndLoadPokemon();
     fetchPokeNames();
+}
+
+function showLoadingSpinner() {
+    let loadingSpinner = document.getElementById('loadingspinner');
+    loadingSpinner.style = 'display: flex';
+    document.getElementById('content').style = 'display: none';
+}
+
+function disableLoadingSpinner() {
+    let loadingSpinner = document.getElementById('loadingspinner');
+    loadingSpinner.style = '';
+    document.getElementById('content').style = '';
+}
+
+async function showSpinnerAndLoadPokemon() {
+    showLoadingSpinner();
+    await fetchPokemon();
+    disableLoadingSpinner();
 }
 
 async function fetchPokeNames() {

@@ -24,9 +24,9 @@
                 <div class="search_bar">
                     <div>
                         <div style="display: flex;">
-                            <input id="input_field" type="text"><button
-                                onclick="showSearchedPoke()" class="button">search/get back to first 20 pokemon</button>
-                                <button class="button-2">search/get back</button>
+                            <input id="input_field" type="text"><button onclick="showSearchedPoke()"
+                                class="button">search/get back</button>
+                            <button class="button-2">search/get back</button>
                         </div>
                         <span id="alert_searchbar" class="alert_searchbar">min. 3 Zeichen eingeben!</span>
                     </div>
@@ -39,6 +39,9 @@
         <div class="displayflex">
             <div class="content_limit">
                 <div class="content" id="content"></div>
+                <div class="loadingspinner" id="loadingspinner">
+                    <div class="spinner"></div>
+                </div>
             </div>
         </div>
         <div class="displayflex">
@@ -57,6 +60,7 @@
             </div>
         </div>
     </div>
+
     <footer></footer>
 </body>
 
