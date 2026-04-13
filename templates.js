@@ -6,9 +6,8 @@ function pokemonMainpageTemplate(pokemon, index) {
                 <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
             </div>
             <div id="pokemonImg_${index}"></div>
-            <div>
-                <img>
-                <img>
+            <div class="poke_types" id="poke_types_${index}">
+                <h3>Type(s):</h3>
             </div>
         </div>
     `;
@@ -16,7 +15,7 @@ function pokemonMainpageTemplate(pokemon, index) {
 
 function pokemonCloseLook(pokemon, index) {
     return `
-        <div onclick="disableCloseoverlay(event)" class="pokemon_card_close pokemon_card">
+        <div onclick="disableCloseoverlay(event)" class="pokemon_card_close">
             <div class="pokemon_name">
                 <h2>${pokemon.id}</h2>
                 <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
@@ -65,5 +64,11 @@ function templateInnerStats(pokemon, ix) {
             <span>${pokemon.stats[ix].stat.name}</span>
             <span id="stats_${ix}">: ${pokemon.stats[ix].base_stat}</span>
         </div>
+    `;
+}
+
+function templatePokemonTypes(pokeTypes, index) {
+    return `
+        <span>${pokeTypes[index].type.name}</span>
     `;
 }

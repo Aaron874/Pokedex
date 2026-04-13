@@ -12,6 +12,10 @@ h2 {
     margin: 0;
 }
 
+h3 {
+    margin: 0;
+}
+
 header {
     background-color: rgb(6, 95, 110);
     display: flex;
@@ -26,6 +30,7 @@ header {
     background-color: rgb(15, 118, 136);
     padding-left: 16px;
     padding-right: 16px;
+    padding-bottom: 8px;
 }
 
 .button_style {
@@ -147,16 +152,20 @@ header {
 
 .pokemon_card {
     cursor: pointer;
+    border-style: solid;
+    border-color: white;
 }
 
 .pokemon_card:hover {
     box-shadow: 0 16px 16px 0;
+    border-style: none;
 }
 
 .pokemon_card_close {
     background-color: rgb(15, 118, 136);
     width: 250px;
     height: 390px;
+    cursor: pointer;
 }
 
 .space_around {
@@ -342,6 +351,11 @@ footer {
     to {
       transform: rotate(360deg);
     }
+  }
+
+  .poke_types {
+    display: flex;
+    flex-direction: column;
   }
 
 @media (max-width: 450px) {

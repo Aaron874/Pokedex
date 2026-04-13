@@ -215,6 +215,11 @@ function backgroundPokemonCard(responseToJson, index) {
     document.getElementById(`pokemonImg_${index}`).appendChild(pokemonImg);
 
     const className = responseToJson.types[0].type.name;
+    let pokeTypes = responseToJson.types;
+
+    for (let i = 0; i < pokeTypes.length; i++) {
+        document.getElementById(`poke_types_${index}`).innerHTML += templatePokemonTypes(pokeTypes, i);
+    }
 
     pokemonImg.classList.add("pokemon_img");
     pokemonImg.classList.add(className);
