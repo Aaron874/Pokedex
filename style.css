@@ -159,6 +159,7 @@ header {
 .pokemon_card:hover {
     box-shadow: 0 16px 16px 0;
     border-style: none;
+    padding: 3px;
 }
 
 .pokemon_card_close {

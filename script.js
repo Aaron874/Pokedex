@@ -172,16 +172,14 @@ function nextCard(index) {
     if (currentIndex <= 10500) {
         closeOverlay();
         openOverlay(currentIndex);
-    }
-    closeOverlay();
+    }else{}
 }
 
 function previousCard(index) {
     if (index >= 1) {
         closeOverlay();
         openOverlay(index);
-    }
-    closeOverlay();
+    } else{}
 }
 
 function openMain() {
