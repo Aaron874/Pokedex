@@ -12,12 +12,14 @@ function showLoadingSpinner() {
     let loadingSpinner = document.getElementById('loadingspinner');
     loadingSpinner.style = 'display: flex';
     document.getElementById('content').style = 'display: none';
+    document.getElementById('loadingbutton').style = 'display: none';
 }
 
 function disableLoadingSpinner() {
     let loadingSpinner = document.getElementById('loadingspinner');
     loadingSpinner.style = '';
     document.getElementById('content').style = '';
+    document.getElementById('loadingbutton').style = '';
 }
 
 async function showSpinnerAndLoadPokemon() {
@@ -234,3 +236,6 @@ function disableCloseoverlay(event) {
     event.stopPropagation("onclick");
 }
 
+function reloadPage(){
+    location.reload();
+}

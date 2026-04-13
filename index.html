@@ -18,15 +18,15 @@
         <nav class="navbar bg-body-tertiary content_limit">
             <div class="container-fluid header">
                 <div class="header_title">
-                    <img class="header_img" src="./img/icon.png" alt="">
-                    <h1 class="navbar-brand mb-0 h1">Pokedex</h1>
+                    <img onclick="reloadPage()" class="header_img" src="./img/icon.png" alt="">
+                    <h1 onclick="reloadPage()" class="navbar-brand mb-0 h1">Pokedex</h1>
                 </div>
                 <div class="search_bar">
                     <div>
                         <div style="display: flex;">
                             <input id="input_field" type="text"><button onclick="showSpinnerAndLoadPokemonSearching()"
-                                class="button">search/get back</button>
-                            <button class="button-2">search/get back</button>
+                                class="button">search</button>
+                            <button class="button-2">search</button>
                         </div>
                         <span id="alert_searchbar" class="alert_searchbar">min. 3 Zeichen eingeben!</span>
                     </div>
@@ -56,7 +56,7 @@
         <div class="displayflex">
             <div class="content_limit">
                 <div class="button_style">
-                    <button class="loading_button" onclick="showSpinnerAndLoadMorePokemon()">mehr Pokemon laden</button>
+                    <button id="loadingbutton" class="loading_button" onclick="showSpinnerAndLoadMorePokemon()">mehr Pokemon laden</button>
                 </div>
             </div>
         </div>

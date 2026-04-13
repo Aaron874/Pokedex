@@ -53,6 +53,10 @@ header {
     padding-right: 16px;
 }
 
+.navbar-brand {
+    cursor: pointer;
+}
+
 .pokemon_img {
     width: 150px;
 }
@@ -271,6 +275,7 @@ footer {
 .header_img {
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 
 .header_title {
