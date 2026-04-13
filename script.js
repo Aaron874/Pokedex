@@ -73,14 +73,21 @@ async function searchPoke() {
         name.toLowerCase().startsWith(input));
     let selectedPokemon = document.getElementById('content');
     selectedPokemon.innerHTML = '';
-    for (let index = 0; index < results.length; index++) {
-        const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${results[index]}`;
-        let response = await fetch(SOME_URL);
-        let responseToJson = await response.json();
-        selectedPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
-        backgroundPokemonCard(responseToJson, index);
-    }
-    document.getElementById('alert_searchbar').style = '';
+    if (results.length > 0) {
+        for (let index = 0; index < results.length; index++) {
+            const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${results[index]}`;
+            let response = await fetch(SOME_URL);
+            let responseToJson = await response.json();
+            selectedPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
+            backgroundPokemonCard(responseToJson, index);
+        }
+        document.getElementById('alert_searchbar').style = '';
+    } else{noPokemonFound();}
+}
+
+function noPokemonFound() {
+    let content = document.getElementById('content');
+    content.innerHTML += "NO POKEMON FOUND";
 }
 
 async function fetchPokemon() {
