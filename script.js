@@ -26,6 +26,18 @@ async function showSpinnerAndLoadPokemon() {
     disableLoadingSpinner();
 }
 
+async function showSpinnerAndLoadMorePokemon() {
+    showLoadingSpinner();
+    await fetchMorePokemon();
+    disableLoadingSpinner();
+}
+
+async function showSpinnerAndLoadPokemonSearching() {
+    showLoadingSpinner();
+    await showSearchedPoke();
+    disableLoadingSpinner();
+}
+
 async function fetchPokeNames() {
     const NAMES_URL = 'https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0';
 

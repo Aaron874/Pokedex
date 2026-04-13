@@ -24,7 +24,7 @@
                 <div class="search_bar">
                     <div>
                         <div style="display: flex;">
-                            <input id="input_field" type="text"><button onclick="showSearchedPoke()"
+                            <input id="input_field" type="text"><button onclick="showSpinnerAndLoadPokemonSearching()"
                                 class="button">search/get back</button>
                             <button class="button-2">search/get back</button>
                         </div>
@@ -41,6 +41,7 @@
                 <div class="content" id="content"></div>
                 <div class="loadingspinner" id="loadingspinner">
                     <div class="spinner"></div>
+                    <span>...loading</span>
                 </div>
             </div>
         </div>
@@ -55,7 +56,7 @@
         <div class="displayflex">
             <div class="content_limit">
                 <div class="button_style">
-                    <button class="loading_button" onclick="fetchMorePokemon()">mehr Pokemon laden</button>
+                    <button class="loading_button" onclick="showSpinnerAndLoadMorePokemon()">mehr Pokemon laden</button>
                 </div>
             </div>
         </div>
