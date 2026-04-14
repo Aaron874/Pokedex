@@ -52,7 +52,7 @@ function pokemonCloseLook(pokemon, index) {
                 <div id="stats_inner">
                 </div>
             </div>
-            <div class="button-previous" onclick="previousCard(${index})"><</div>
+            <div class="button-previous ${index === 0 ? 'disabled' : ''}" id="button-previous" onclick="previousCard(${index})"><</div>
             <div class="button-next" onclick="nextCard(${index})">></div>
         </div>
     `;

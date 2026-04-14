@@ -183,7 +183,7 @@ function previousCard(index) {
     if (index >= 1) {
         closeOverlay();
         openOverlay(index);
-    } else { }
+    } else {}
 }
 
 function openMain() {

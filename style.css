@@ -159,20 +159,21 @@ header {
 .pokemon_card:hover {
     box-shadow: 0 16px 16px 0;
     border-style: none;
-    padding: 3px;
+    border-style: solid;
+    border-color: black;
 }
 
 .pokemon_card_close {
     background-color: rgb(15, 118, 136);
     width: 250px;
     height: 390px;
-    cursor: pointer;
 }
 
 .space_around {
     display: flex;
     justify-content: space-around;
     background-color: #21217ca1;
+    cursor: pointer;
 }
 
 .style_pokemon_closelook {
@@ -218,17 +219,24 @@ header {
     top: -14px;
     left: 227px;
     font-size: 40px;
-    width: 40px;
+    width: 0px;
     color: orange;
+    cursor: pointer;
 }
 
 .button-previous {
     position: relative;
     top: 32px;
     font-size: 40px;
-    width: 40px;
+    width: 0px;
     color: orange;
+    cursor: pointer;
 }
+
+.button-previous.disabled {
+    cursor: default;
+}
+
 span {
     color: white;
 }
