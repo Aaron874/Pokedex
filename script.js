@@ -90,7 +90,7 @@ async function showSearchedPoke() {
 
 async function searchPoke() {
     let input = document.getElementById('input_field').value.toLowerCase();
-    let results = PokemonNames.filter(name =>
+    let results = currentAmountofPokemon.filter(name =>
         name.toLowerCase().includes(input));
     let selectedPokemon = document.getElementById('content');
     selectedPokemon.innerHTML = '';
