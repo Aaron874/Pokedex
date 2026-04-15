@@ -96,6 +96,7 @@ async function searchPoke() {
         name.toLowerCase().includes(input));
     let selectedPokemon = document.getElementById('content');
     selectedPokemon.innerHTML = '';
+    searchedPokemon.length = 0;
     if (results.length > 0) {
         for (let index = 0; index < results.length; index++) {
             const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${results[index]}`;
@@ -176,7 +177,13 @@ async function openOverlay(index) {
 
 function renderButtonsNextAndPrevious(index) {
     let currentIndex = index - 1;
-    if (currentIndex >= 1 && currentIndex <= currentAmountofPokemon.length - 2) {
+    if (searchedPokemon.length !== 0) {
+        for (let newIndex = 0; newIndex < searchedPokemon.length; newIndex++) {
+            document.getElementById('buttons_next_previous').innerHTML = templateButtonsNextAndPreviousCard(newIndex);
+            
+        }
+        
+    } else if (currentIndex >= 1 && currentIndex <= currentAmountofPokemon.length - 2) {
         document.getElementById('buttons_next_previous').innerHTML += templateButtonsNextAndPreviousCard(index);
     } else if (currentIndex >= currentAmountofPokemon.length - 1 && currentIndex <= currentAmountofPokemon.length) {
         document.getElementById('buttons_next_previous').innerHTML += templateButtonOnlyPreviousCard(index);
