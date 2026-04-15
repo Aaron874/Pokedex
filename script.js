@@ -89,7 +89,7 @@ async function showSearchedPoke() {
 async function searchPoke() {
     let input = document.getElementById('input_field').value.toLowerCase();
     let results = PokemonNames.filter(name =>
-        name.toLowerCase().startsWith(input));
+        name.toLowerCase().includes(input));
     let selectedPokemon = document.getElementById('content');
     selectedPokemon.innerHTML = '';
     if (results.length > 0) {
@@ -191,16 +191,18 @@ async function openStats(index) {
 
 function nextCard(index) {
     let currentIndex = index + 2;
-    if (currentIndex <= 10500) {
+    if (currentIndex <= currentAmountofPokemon.length) {
         closeOverlay();
         openOverlay(currentIndex);
     } else { }
 }
 
 function previousCard(index) {
-    if (index >= 1) {
-        closeOverlay();
-        openOverlay(index);
+    if (index <= currentAmountofPokemon.length) {
+        if (index >= 1) {
+            closeOverlay();
+            openOverlay(index);
+        }
     } else { }
 }
 
