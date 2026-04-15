@@ -13,7 +13,7 @@ function pokemonMainpageTemplate(pokemon, index) {
     `;
 }
 
-function pokemonCloseLook(pokemon, index) {
+function pokemonCloseLook(pokemon, index, amountPokemon) {
     return `
         <div onclick="disableCloseoverlay(event)" class="pokemon_card_close">
             <div class="pokemon_name">
@@ -52,9 +52,27 @@ function pokemonCloseLook(pokemon, index) {
                 <div id="stats_inner">
                 </div>
             </div>
-            <div class="button-previous ${index === 0 ? 'disabled' : ''}" id="button-previous" onclick="previousCard(${index})"><</div>
-            <div class="button-next" onclick="nextCard(${index})">></div>
+            <div id="buttons_next_previous"></div>
         </div>
+    `;
+}
+
+function templateButtonsNextAndPreviousCard(index) {
+    return `
+        <div class="button-previous" id="button-previous" onclick="previousCard(${index})"><</div>
+        <div class="button-next" id="button-next" onclick="nextCard(${index})">></div>
+    `;
+}
+
+function templateButtonOnlyNextCard(index) {
+    return `
+        <div class="button-next" id="button-next" onclick="nextCard(${index})">></div>
+    `;
+}
+
+function templateButtonOnlyPreviousCard(index) {
+    return `
+        <div class="button-previous" id="button-previous" onclick="previousCard(${index})"><</div>
     `;
 }
 

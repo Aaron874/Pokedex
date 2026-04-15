@@ -123,6 +123,7 @@ async function fetchPokemon() {
         currentIndexObject.value = 21;
         currentAmountofPokemon.push(responseToJson.forms[0].name);
     }
+    console.log(currentAmountofPokemon);
 }
 
 async function countAndFetchMorePokemon() {
@@ -160,12 +161,25 @@ async function openOverlay(index) {
     let response = await fetch(SOME_URL);
     let responseToJson = await response.json();
     document.getElementById('overlay').style = 'display: flex';
-    pokemonCard.innerHTML += pokemonCloseLook(responseToJson, currentIndex);
+    pokemonCard.innerHTML += pokemonCloseLook(responseToJson, currentIndex, currentAmountofPokemon.length);
     document.getElementById('stats_stats').style = 'display: none';
     backgroundPokemonCardCloselook(responseToJson, currentIndex);
     showAbilities(responseToJson);
     let body = document.getElementById('body');
     body.classList.add("overflow");
+    renderButtonsNextAndPrevious(index);
+}
+
+function renderButtonsNextAndPrevious(index) {
+    let currentIndex = index - 1;
+    if (currentIndex >= 1 && currentIndex <= currentAmountofPokemon.length - 2) {
+        document.getElementById('buttons_next_previous').innerHTML += templateButtonsNextAndPreviousCard(index);
+    } else if (currentIndex >= currentAmountofPokemon.length - 1 && currentIndex <= currentAmountofPokemon.length) {
+        document.getElementById('buttons_next_previous').innerHTML += templateButtonOnlyPreviousCard(index);
+    } else if (currentIndex <= 1) {
+        document.getElementById('buttons_next_previous').innerHTML += templateButtonOnlyNextCard(index);
+        document.getElementById('button-next').classList.add('button-next-extrastyle');
+    }
 }
 
 function showAbilities(responseToJson) {
@@ -192,18 +206,20 @@ async function openStats(index) {
 }
 
 function nextCard(index) {
-    let currentIndex = index + 2;
+    let currentIndex = index;
     if (currentIndex <= currentAmountofPokemon.length) {
         closeOverlay();
-        openOverlay(currentIndex);
-    } else { }
+        openOverlay(currentIndex + 1);
+    } else {
+        document.getElementById('button-next').classList.add('button-next-disabled');
+    }
 }
 
 function previousCard(index) {
     if (index <= currentAmountofPokemon.length) {
         if (index >= 1) {
             closeOverlay();
-            openOverlay(index);
+            openOverlay(index - 1);
         }
     } else { }
 }

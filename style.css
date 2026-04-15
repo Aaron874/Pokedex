@@ -228,6 +228,10 @@ header {
     cursor: pointer;
 }
 
+.button-next-disabled {
+    display: none;
+}
+
 .button-previous {
     position: relative;
     top: 32px;
@@ -237,8 +241,8 @@ header {
     cursor: pointer;
 }
 
-.button-previous.disabled {
-    cursor: default;
+.button-next-extrastyle {
+    top: 33px;
 }
 
 span {
