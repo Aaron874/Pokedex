@@ -48,6 +48,10 @@ header {
     cursor: pointer;
 }
 
+.loading_button_disabled {
+    display: none;
+}
+
 .loading_button:hover {
     background-color: rgb(255, 0, 0);
 }

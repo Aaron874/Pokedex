@@ -73,11 +73,13 @@ async function fetchCurrentAmountOfPokemon() {
 async function showSearchedPoke() {
     let input = document.getElementById('input_field').value.toLowerCase();
     let content = document.getElementById('content');
+    let loadingbutton = document.getElementById('loadingbutton');
     if (input.length >= 3) {
         await searchPoke();
+        loadingbutton.classList.add('loading_button_disabled');
     } else if (input.length < 1 && content.childElementCount < 20) {
         await fetchCurrentAmountOfPokemon();
-        // currentIndex = 21;
+        loadingbutton.classList.remove('loading_button_disabled');
         document.getElementById('alert_searchbar').style = '';
     } else if (input.length > 0 && input.length < 3) {
         document.getElementById('alert_searchbar').style = 'display: flex';
