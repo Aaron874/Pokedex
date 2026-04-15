@@ -1,11 +1,14 @@
 const PokemonNames = [];
+const currentAmountofPokemon = [];
 const currentIndexObject = {};
 
 let currentIndex = 21;
 
 function init() {
+    fetchPokemon();
     showSpinnerAndLoadPokemon();
     fetchPokeNames();
+    console.log(currentAmountofPokemon);
 }
 
 function showLoadingSpinner() {
@@ -55,14 +58,26 @@ async function fetchPokeNames() {
     }
 }
 
+async function fetchCurrentAmountOfPokemon() {
+    let allPokemon = document.getElementById('content');
+    allPokemon.innerHTML = '';
+    for (let index = 1; index < currentAmountofPokemon.length + 1; index++) {
+        const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${index}`;
+        let response = await fetch(SOME_URL);
+        let responseToJson = await response.json();
+        allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
+        backgroundPokemonCard(responseToJson, index);
+    }
+}
+
 async function showSearchedPoke() {
     let input = document.getElementById('input_field').value.toLowerCase();
     let content = document.getElementById('content');
     if (input.length >= 3) {
         await searchPoke();
     } else if (input.length < 1 && content.childElementCount < 20) {
-        await fetchPokemon();
-        currentIndex = 21;
+        await fetchCurrentAmountOfPokemon();
+        // currentIndex = 21;
         document.getElementById('alert_searchbar').style = '';
     } else if (input.length > 0 && input.length < 3) {
         document.getElementById('alert_searchbar').style = 'display: flex';
@@ -104,6 +119,7 @@ async function fetchPokemon() {
         allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
         backgroundPokemonCard(responseToJson, index);
         currentIndexObject.value = 21;
+        currentAmountofPokemon.push(responseToJson.forms[0].name);
     }
 }
 
@@ -125,9 +141,11 @@ async function fetchMorePokemon() {
         let responseToJson = await response.json();
         allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
         backgroundPokemonCard(responseToJson, index);
+        currentAmountofPokemon.push(responseToJson.forms[0].name);
     }
     currentIndex += 20;
     currentIndexObject.value = currentIndex;
+    console.log(currentAmountofPokemon);
 }
 
 
@@ -183,7 +201,7 @@ function previousCard(index) {
     if (index >= 1) {
         closeOverlay();
         openOverlay(index);
-    } else {}
+    } else { }
 }
 
 function openMain() {
