@@ -1,5 +1,6 @@
 const PokemonNames = [];
 const currentAmountofPokemon = [];
+const searchedPokemon = [];
 const currentIndexObject = {};
 
 let currentIndex = 21;
@@ -61,6 +62,7 @@ async function fetchPokeNames() {
 async function fetchCurrentAmountOfPokemon() {
     let allPokemon = document.getElementById('content');
     allPokemon.innerHTML = '';
+    searchedPokemon.length = 0;
     for (let index = 1; index < currentAmountofPokemon.length + 1; index++) {
         const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${index}`;
         let response = await fetch(SOME_URL);
@@ -101,7 +103,9 @@ async function searchPoke() {
             let responseToJson = await response.json();
             selectedPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
             backgroundPokemonCard(responseToJson, index);
+            searchedPokemon.push(responseToJson.forms[0].name)
         }
+        console.log(searchedPokemon);
         document.getElementById('alert_searchbar').style = '';
     } else { noPokemonFound(); }
 }
@@ -202,6 +206,12 @@ async function openStats(index) {
     let responseToJson = await response.json();
     for (let ix = 0; ix < responseToJson.stats.length; ix++) {
         document.getElementById('stats_inner').innerHTML += templateInnerStats(responseToJson, ix);
+    }
+}
+
+function nextCardSearchedPkm(newIndex) {
+    if (newIndex <= sear) {
+        
     }
 }
 
