@@ -4,12 +4,13 @@ const searchedPokemon = [];
 const currentIndexObject = {};
 
 let currentIndex = 21;
+let activePokemonList = [];
+let activeOverlayIndex = 0;
 
 function init() {
-    fetchPokemon();
+    // fetchPokemon();
     showSpinnerAndLoadPokemon();
     fetchPokeNames();
-    console.log(currentAmountofPokemon);
 }
 
 function showLoadingSpinner() {
@@ -36,7 +37,11 @@ async function fetchingAndLoadingPokemon(event) {
     if (document.getElementById('input_field').value !== '') {
         await showSearchedPoke();
     } else if (document.getElementById('input_field').value == '' && document.getElementById('content').childElementCount < 20) {
-        await showSearchedPoke();
+        if (currentAmountofPokemon.length === 0) {
+            await fetchPokemon();
+        } else {
+            await showSearchedPoke();
+        }
     } else if (event.target.id === 'loadingbutton') {
         await countAndFetchMorePokemon();
     } else {
@@ -63,13 +68,14 @@ async function fetchCurrentAmountOfPokemon() {
     let allPokemon = document.getElementById('content');
     allPokemon.innerHTML = '';
     searchedPokemon.length = 0;
-    for (let index = 1; index < currentAmountofPokemon.length + 1; index++) {
-        const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${index}`;
+    for (let index = 0; index < currentAmountofPokemon.length; index++) {
+        const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${currentAmountofPokemon[index]}`;
         let response = await fetch(SOME_URL);
         let responseToJson = await response.json();
         allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
         backgroundPokemonCard(responseToJson, index);
     }
+    activePokemonList = [...currentAmountofPokemon];
 }
 
 async function showSearchedPoke() {
@@ -87,7 +93,9 @@ async function showSearchedPoke() {
         document.getElementById('alert_searchbar').style = 'display: flex';
     } else if (input.length < 1) {
         document.getElementById('alert_searchbar').style = 'display: flex';
+        activePokemonList = [...currentAmountofPokemon];
     }
+    console.log(currentAmountofPokemon);
 }
 
 async function searchPoke() {
@@ -102,10 +110,11 @@ async function searchPoke() {
             const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${results[index]}`;
             let response = await fetch(SOME_URL);
             let responseToJson = await response.json();
+            searchedPokemon.push(responseToJson.forms[0].name)
             selectedPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
             backgroundPokemonCard(responseToJson, index);
-            searchedPokemon.push(responseToJson.forms[0].name)
         }
+        activePokemonList = [...searchedPokemon];
         console.log(searchedPokemon);
         document.getElementById('alert_searchbar').style = '';
     } else { noPokemonFound(); }
@@ -123,11 +132,13 @@ async function fetchPokemon() {
         const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${index}`;
         let response = await fetch(SOME_URL);
         let responseToJson = await response.json();
-        allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
-        backgroundPokemonCard(responseToJson, index);
         currentIndexObject.value = 21;
         currentAmountofPokemon.push(responseToJson.forms[0].name);
+        let listIndex = currentAmountofPokemon.length - 1;
+        allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, listIndex);
+        backgroundPokemonCard(responseToJson, listIndex);
     }
+    activePokemonList = [...currentAmountofPokemon];
     console.log(currentAmountofPokemon);
 }
 
@@ -147,53 +158,55 @@ async function fetchMorePokemon() {
         const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${index}`;
         let response = await fetch(SOME_URL);
         let responseToJson = await response.json();
-        allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, index);
-        backgroundPokemonCard(responseToJson, index);
         currentAmountofPokemon.push(responseToJson.forms[0].name);
+        let listIndex = currentAmountofPokemon.length - 1;
+        allPokemon.innerHTML += pokemonMainpageTemplate(responseToJson, listIndex);
+        backgroundPokemonCard(responseToJson, listIndex);
+
     }
     currentIndex += 20;
     currentIndexObject.value = currentIndex;
+    activePokemonList = [...currentAmountofPokemon];
     console.log(currentAmountofPokemon);
 }
 
 
-async function openOverlay(index) {
+async function openOverlay(listIndex) {
     let pokemonCard = document.getElementById('overlay_content');
     pokemonCard.innerHTML = "";
-    let results = PokemonNames;
-    let currentIndex = index - 1;
-    const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${results[currentIndex]}`;
+    activeOverlayIndex = listIndex;
+    let pokemonName = activePokemonList[activeOverlayIndex];
+    const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
     let response = await fetch(SOME_URL);
     let responseToJson = await response.json();
     document.getElementById('overlay').style = 'display: flex';
-    pokemonCard.innerHTML += pokemonCloseLook(responseToJson, currentIndex, currentAmountofPokemon.length);
+    pokemonCard.innerHTML += pokemonCloseLook(responseToJson, activeOverlayIndex, activePokemonList.length);
     document.getElementById('stats_stats').style = 'display: none';
-    backgroundPokemonCardCloselook(responseToJson, currentIndex);
+    backgroundPokemonCardCloselook(responseToJson, activeOverlayIndex);
     showAbilities(responseToJson);
     let body = document.getElementById('body');
     body.classList.add("overflow");
-    renderButtonsNextAndPrevious(index);
+    renderButtonsNextAndPrevious();
 }
 
-function renderButtonsNextAndPrevious(index) {
-    let currentIndex = index - 1;
-    if (searchedPokemon.length !== 0) {
-        for (let newIndex = 0; newIndex < searchedPokemon.length; newIndex++) {
-            document.getElementById('buttons_next_previous').innerHTML = templateButtonsNextAndPreviousCard(newIndex);
-            
-        }
-        
-    } else if (currentIndex >= 1 && currentIndex <= currentAmountofPokemon.length - 2) {
-        document.getElementById('buttons_next_previous').innerHTML += templateButtonsNextAndPreviousCard(index);
-    } else if (currentIndex >= currentAmountofPokemon.length - 1 && currentIndex <= currentAmountofPokemon.length) {
-        document.getElementById('buttons_next_previous').innerHTML += templateButtonOnlyPreviousCard(index);
-    } else if (currentIndex <= 1) {
-        document.getElementById('buttons_next_previous').innerHTML += templateButtonOnlyNextCard(index);
+function renderButtonsNextAndPrevious() {
+    let buttons = document.getElementById('buttons_next_previous');
+    buttons.innerHTML = '';
+    if (activePokemonList.length <= 1) {
+        return;
+    }
+    if (activeOverlayIndex > 0 && activeOverlayIndex < activePokemonList.length - 1) {
+        buttons.innerHTML = templateButtonsNextAndPreviousCard();
+    } else if (activeOverlayIndex === 0) {
+        buttons.innerHTML = templateButtonOnlyNextCard();
         document.getElementById('button-next').classList.add('button-next-extrastyle');
+    } else if (activeOverlayIndex === activePokemonList.length - 1) {
+        buttons.innerHTML = templateButtonOnlyPreviousCard();
     }
 }
 
 function showAbilities(responseToJson) {
+    document.getElementById('abilities_Id').innerHTML = ': ';
     for (let i = 0; i < responseToJson.abilities.length; i++) {
         if (i === responseToJson.abilities.length - 1) {
             document.getElementById('abilities_Id').innerHTML += responseToJson.abilities[i].ability.name;
@@ -207,8 +220,8 @@ async function openStats(index) {
     document.getElementById('stats_inner').innerHTML = "";
     document.getElementById('stats_main').style = 'display: none';
     document.getElementById('stats_stats').style = '';
-    let currentIndex = index + 1;
-    const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${currentIndex}`;
+    let pokemonName = activePokemonList[index];
+    const SOME_URL = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
     let response = await fetch(SOME_URL);
     let responseToJson = await response.json();
     for (let ix = 0; ix < responseToJson.stats.length; ix++) {
@@ -216,29 +229,16 @@ async function openStats(index) {
     }
 }
 
-function nextCardSearchedPkm(newIndex) {
-    if (newIndex <= sear) {
-        
+function nextCard() {
+    if (activeOverlayIndex < activePokemonList.length - 1) {
+        openOverlay(activeOverlayIndex + 1);
     }
 }
 
-function nextCard(index) {
-    let currentIndex = index;
-    if (currentIndex <= currentAmountofPokemon.length) {
-        closeOverlay();
-        openOverlay(currentIndex + 1);
-    } else {
-        document.getElementById('button-next').classList.add('button-next-disabled');
+function previousCard() {
+    if (activeOverlayIndex > 0) {
+        openOverlay(activeOverlayIndex - 1);
     }
-}
-
-function previousCard(index) {
-    if (index <= currentAmountofPokemon.length) {
-        if (index >= 1) {
-            closeOverlay();
-            openOverlay(index - 1);
-        }
-    } else { }
 }
 
 function openMain() {
