@@ -8,7 +8,6 @@ let activePokemonList = [];
 let activeOverlayIndex = 0;
 
 function init() {
-    // fetchPokemon();
     showSpinnerAndLoadPokemon();
     fetchPokeNames();
 }
